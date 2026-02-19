@@ -99,3 +99,85 @@ ex: Archi TCP/IP fait fonctionner internet.
 - Tous exec, dans l'app, le syst. exploit. et la carte reseau.
 
 ### Protocole:
+
+- **HTTP**: gère les requetes et les reponses pour échanger avec des pages web.
+- **IP**: nécessaire pour la plupart des applications.
+- **TCP**: assure la fiabilité des transmissions.
+- **DNS**:
+  - utilisé pour nommer les machines sur internet, en particulier les serveurs.
+  - toutes les applications font appel au DNS pour trouver les adresses IP associées aux noms de serveurs.
+  - se trouve dans un couche séparée, pour prévoir une éventuelle évolution de ce protocol.
+- **adresse MAC**: identifie lees cartes reseau.
+
+- **Archi en Couche** (3 principales):
+  - les couches applicative (un proto pour chaque application)
+  - la couche de transport (determine le chemin a suivre)
+  - la couche de transmission (gère la transmission physique des données sur le réseau)
+  - **encapsulation**:
+    - Les données de la couche N sont l'entete de la couche N + 1 + les données de la couche N + 1.
+    - En gros, on a: **Dn = Hn+1 + Dn+1**
+    - Pour detecter les erreurs on utilise le **checksum**:
+      - calculé sur l'émetteur sur les données avant l'envoi et envoyé au récepteur
+      - ensuite lorsque les données arrivent en réception, nous refaisons le meme calcul sur les données reçus et comparons
+        le checksum avec celui d'avant.
+      - pas d'erreur ? return OK (msg d'acquittement ACK) : return not-OK;
+
+- **2 type de protocoles** (cf voir figure "bout-en-bout vs point-à-point"):
+  - **bout en bout**: s'exec uniquement aux extrémités du réseau, c-a-d sur les équipements terminaux de l'user (ex: nav web, app, serveur web, tel pour appel).
+  - **point-à-point**: s'exec également sur les équipements intermédiaires (répéteur, borne WIFI, box, commutateurs, routeur, pare-feu)
+
+![bout-en-bout vs point-à-point](public/type_proto.png)
+
+exemple bout en bout: proto applicatifs tq HTTP, ainsi que TCP et UDP.
+exemple point-à-point: IP car il s'exec sur tous les routeurs traversés.
+
+## Le modèle de référence - OSI:
+
+le modèle théorique qui décrit le fonctionnement d'une architecture réseau dans son ensemble.
+
+- 7 couches:
+  - 7. **couche application** (la plus haute):
+    - gère le dialogue entre le processus client et le serveur.
+    - exemple: HTTP sur internet permet de demander une page web à un processus serveur qui héberge cette page web.
+  - 6. **couche presentation**: transforme les données provenant d'apps, comme pour des raison de secu en utilisant le chiffrement SSL sur internet.
+  - 5. **couche session**:
+    - permet de créer des point de reprise pour les apps qui en ont besoin
+    - par exemple, interrompre/reprendre un transfert.
+  - 4. **couche transport**:
+    - assure la fiabilité du transfert
+    - garantissant que tout ce qui arrive à destination corresponde à ce qui initialement été émis
+    - veille a qu'il n'y est pas d'erreur.
+    - au niveau de internet c'est TCP
+  - 3. **couche réseau**:
+    - détermine par ou les paquets vont passer pour aller d'un point à un autre dans le reseau.
+    - utilise les adresses spécifiques à chaque architecture réseau.
+    - ex: Il s'agit des adresses IP sur internet, du numéro de tel dans le reseau telephonique.
+  - 2. **couche liaison**:
+    - s'occupe de l'interface entre deux cartes réseau et de la gestion du dialogue sur une liaison multipoint.
+    - pour cela elle utilise les adresse des cartes réseau: les adresses **MAC**.
+  - 1. **couche physique** (la plus basse): transmission d'une seq binaire sur un support de transmission.
+
+**Couche point-à-point**: couche 1, 2, et 3. Donc s'exec tant sur les équipements terminaux que sur les intermédiaires.
+**Couche bout à bout**: couche 4, 5, 6, et 7. s'exec sur les équipements terminaux.
+
+- **unité de transmission**:
+  - **trame**: unité de transmission au niveau de la carte reseau, ou plus précisément de la couche liaison.
+  - **paquet**: unité de transmission au niveau de la couche reseau, on parle de paquet IP.
+  - Et pour les couche sup, on parle de **message**.
+
+Chaque couche du modèle OSI ajoute son en-tete sauf la couche 1.
+En revanche, pour la **couche 2**, on ajoute également:
+
+- un enqueue: permet de stocker le **checksum**
+- en fin de trame parce que c'es seulement une fois avoir vue toutes les données que le calcul de checksum est terminé et ajouté a la fin de la trame.
+
+**Mode connecté vs Mode non-connecté**:
+
+- Presque tous les protocoles sont en mode non-connecté.
+- mode connecté: en gros avant de transmettre des informations, on doit d'abord demander si cette dernière est d'accord pour les recevoirs.
+- (le seule en mode connecté) TCP assure la fiabilité alors est en mode connecté.
+- en mode non-connecté, on dit qu'on dans un mode **best-effort**, on ne sait pas si les données arriveront.
+
+# Pour terminer voici un resume global de l'archi TCP/IP et un exemple d'une requete HTTP:
+
+![interconnexion TCP/IP && ex requete HTTP](public/resume_B.png)
