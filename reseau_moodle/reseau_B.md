@@ -136,26 +136,26 @@ exemple point-à-point: IP car il s'exec sur tous les routeurs traversés.
 le modèle théorique qui décrit le fonctionnement d'une architecture réseau dans son ensemble.
 
 - 7 couches:
-  - 7. **couche application** (la plus haute):
+  - (7) **couche application** (la plus haute):
     - gère le dialogue entre le processus client et le serveur.
     - exemple: HTTP sur internet permet de demander une page web à un processus serveur qui héberge cette page web.
-  - 6. **couche presentation**: transforme les données provenant d'apps, comme pour des raison de secu en utilisant le chiffrement SSL sur internet.
-  - 5. **couche session**:
+  - (6) **couche presentation**: transforme les données provenant d'apps, comme pour des raison de secu en utilisant le chiffrement SSL sur internet.
+  - (5) **couche session**:
     - permet de créer des point de reprise pour les apps qui en ont besoin
     - par exemple, interrompre/reprendre un transfert.
-  - 4. **couche transport**:
+  - (4) **couche transport**:
     - assure la fiabilité du transfert
     - garantissant que tout ce qui arrive à destination corresponde à ce qui initialement été émis
     - veille a qu'il n'y est pas d'erreur.
     - au niveau de internet c'est TCP
-  - 3. **couche réseau**:
+  - (3) **couche réseau**:
     - détermine par ou les paquets vont passer pour aller d'un point à un autre dans le reseau.
     - utilise les adresses spécifiques à chaque architecture réseau.
     - ex: Il s'agit des adresses IP sur internet, du numéro de tel dans le reseau telephonique.
-  - 2. **couche liaison**:
+  - (2) **couche liaison**:
     - s'occupe de l'interface entre deux cartes réseau et de la gestion du dialogue sur une liaison multipoint.
     - pour cela elle utilise les adresse des cartes réseau: les adresses **MAC**.
-  - 1. **couche physique** (la plus basse): transmission d'une seq binaire sur un support de transmission.
+  - (1) **couche physique** (la plus basse): transmission d'une seq binaire sur un support de transmission.
 
 **Couche point-à-point**: couche 1, 2, et 3. Donc s'exec tant sur les équipements terminaux que sur les intermédiaires.
 **Couche bout à bout**: couche 4, 5, 6, et 7. s'exec sur les équipements terminaux.
