@@ -140,7 +140,7 @@ transmettre la configuration réseau de votre machine ou de votre téléphone po
 
 **Trame Ethernet**:
 
-![Trame Ethernet](trame_ethernet.png)
+![Trame Ethernet](public/trame_ethernet.png)
 
 - contient dans son en-tete: adresses MAC src et dest de deux carte reseau émettrice ou destinataire.
 - ensuite, le champ **Type**: indique soit IP, soit ARP.
