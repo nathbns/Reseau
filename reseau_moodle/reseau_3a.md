@@ -152,3 +152,54 @@ transmettre la configuration réseau de votre machine ou de votre téléphone po
 **généralement, IP/ARP min 46 octets, max 1500 octets**
 **si paquet plus grand que 1500, IP le découpe en plusieurs paquet de 1500 octets**
 **si plus petit que 46 octets, Ethernet ajoute du bourrage, octets artificiels pour atteindre 46 octets**
+
+#### Exemple d'un transfert de fichier:
+
+![Fig 1: dialogue FTP sur un reseau local](public/ftp_reseau_local.png)
+
+![Fig 2: dialogue FTP sur différents reseaux](public/ftp_diff_reseau.png)
+
+- Sur la Fig 1, on est dans le cas, un un cable ethernet nous sert de reseau local.
+- Sur la Fig 2, on passe à travers différents reseau:
+  - Un routeur est un équipement intermédiaire qui permet de faire le lien entre deux réseaux sur Internet.
+  - Sur la figure, vous pouvez constater que les protocoles **FTP** et **TCP** ne sont présents qu’aux extrémités, c’est-
+    à-dire là où il y a le client et le serveur. On dit que ces **protocoles sont de bout en bout**. Ils ne s’exécutent
+    pas sur les équipements intermédiaires, comme le routeur. À l’opposé, les autres protocoles comme **IP** et
+    **Ethernet** sont **point à point**. Ils s’exécutent sur chaque liaison et donc sur chaque ordinateur mais aussi
+    sur le routeur.
+
+### L'encapsulation:
+
+![encapsulation](public/encapsulation.png)
+
+### Fonctionnement d'internet:
+
+- protocole **IP** est en mode **non-connecté**.
+- IP est rapide, c'est un protocole simple.
+- IP fait du **best effort**, nous n'avons aucune garantie sur l'arrivées des messages.
+- IP est robuste, mais en cas de panne il assure l'acheminement des paquets. On parle de routage dynamique, il
+  s'adapte si des routeurs tombent en pannent, il cherche un autre chemin pour acheminer les paquets.
+
+- TCP est un protocole de **bout en bout**.
+
+![identification des protocoles](public/identification_proto.png)
+
+---
+
+****QCM Moodle****:
+
+- Fait de la détections d'erreur?
+  - Ethernet, TCP.
+- ARP est encapsulé dans Ethernet?
+  - Vrai.
+- HTTP est encapsulé dans TCP?
+  - Vrai.
+- À propos de l'architecture TCP/IP?
+  - HTTP, SMTP, DNS font partie du bloc applicatif.
+  - IP signifie Internet Protocol.
+- HTTP est?
+  - non fiable.
+- en mode connecté?
+  - TCP.
+- Une machine envoie une requête ARP sur réseau Ethernet. Quels sont les protocoles présents dans la trame envoyée?
+  - ARP, Ethernet.
