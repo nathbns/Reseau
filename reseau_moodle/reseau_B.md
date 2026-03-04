@@ -143,6 +143,7 @@ le modèle théorique qui décrit le fonctionnement d'une architecture réseau d
   - (5) **couche session**:
     - permet de créer des point de reprise pour les apps qui en ont besoin
     - par exemple, interrompre/reprendre un transfert.
+    - **synchronisation des échanges**
   - (4) **couche transport**:
     - assure la fiabilité du transfert
     - garantissant que tout ce qui arrive à destination corresponde à ce qui initialement été émis
@@ -152,9 +153,11 @@ le modèle théorique qui décrit le fonctionnement d'une architecture réseau d
     - détermine par ou les paquets vont passer pour aller d'un point à un autre dans le reseau.
     - utilise les adresses spécifiques à chaque architecture réseau.
     - ex: Il s'agit des adresses IP sur internet, du numéro de tel dans le reseau telephonique.
+    - **déterlination du chemin à travers le reseau**
   - (2) **couche liaison**:
     - s'occupe de l'interface entre deux cartes réseau et de la gestion du dialogue sur une liaison multipoint.
     - pour cela elle utilise les adresse des cartes réseau: les adresses **MAC**.
+    - **découpage du flot binaire reçu en trame**
   - (1) **couche physique** (la plus basse): transmission d'une seq binaire sur un support de transmission.
 
 **Couche point-à-point**: couche 1, 2, et 3. Donc s'exec tant sur les équipements terminaux que sur les intermédiaires.
